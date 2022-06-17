@@ -17,7 +17,7 @@
           <a>
             <p>Settings</p>
           </a>
-          <a @click="$router.push('/login')">
+          <a @click="logOut">
             <p>Log out</p>
           </a>
         </template>
@@ -31,8 +31,10 @@
 import { ref, onMounted, inject } from 'vue'
 import { FullscreenOutlined, FullscreenExitOutlined, RedoOutlined } from '@ant-design/icons-vue';
 import logo from '@/assets/jingyu.png'
-
+import { useRouter } from 'vue-router';
 import { useStore } from '@/stores/useStore'
+
+const router = useRouter()
 
 const { navKey, changeNavKey, changeSideKey, username } = useStore()
 
@@ -63,6 +65,11 @@ const fullScreen = () => {
 const cancelScreen = () => {
   isFull.value = false
   document.exitFullscreen()
+}
+
+const logOut = () => {
+  sessionStorage.clear()
+  router.push('/login')
 }
 </script>
 
