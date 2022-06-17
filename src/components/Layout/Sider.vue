@@ -25,9 +25,9 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from "vue";
 
-import { useSelectKeyStore } from "@/stores/selectKeyStore";
+import { useStore } from "@/stores/useStore";
 
-const { sideKey, changeSideKey, navKey } = useSelectKeyStore();
+const { sideKey, changeSideKey } = useStore();
 
 const props = defineProps<{
   select: string;

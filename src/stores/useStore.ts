@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useSelectKeyStore = defineStore({
+export const useStore = defineStore({
   id: 'selectKey',
   state: () => ({
     username: 'David',
@@ -19,6 +19,9 @@ export const useSelectKeyStore = defineStore({
     changeSideKey(key: string[]) {
       this.sideKey = key
     },
+    changeToken(token: string) {
+      this.token = token
+    }
   },
   persist: {
     enabled: true,

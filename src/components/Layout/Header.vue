@@ -17,7 +17,7 @@
           <a>
             <p>Settings</p>
           </a>
-          <a>
+          <a @click="$router.push('/login')">
             <p>Log out</p>
           </a>
         </template>
@@ -32,9 +32,9 @@ import { ref, onMounted, inject } from 'vue'
 import { FullscreenOutlined, FullscreenExitOutlined, RedoOutlined } from '@ant-design/icons-vue';
 import logo from '@/assets/jingyu.png'
 
-import { useSelectKeyStore } from '@/stores/selectKeyStore'
+import { useStore } from '@/stores/useStore'
 
-const { navKey, changeNavKey, changeSideKey, username } = useSelectKeyStore()
+const { navKey, changeNavKey, changeSideKey, username } = useStore()
 
 const emit = defineEmits<{ (event: 'getKey', key: string, sideKey: string[]): void }>()
 

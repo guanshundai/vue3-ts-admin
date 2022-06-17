@@ -11,9 +11,9 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
-import { useSelectKeyStore } from '@/stores/selectKeyStore'
+import { useStore } from '@/stores/useStore'
 
-const { navKey } = useSelectKeyStore()
+const { navKey } = useStore()
 
 const select = ref<string>('nav1')
 const sideKey = ref<string[]>(['1'])

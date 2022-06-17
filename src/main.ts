@@ -7,12 +7,19 @@ import defineComponents from '@/utils/defineComponents'  //全局注册自定义
 
 import App from './App.vue'
 import router from './router'
+import { useStore } from './stores/useStore';
 
+const pinia = createPinia()
 const app = createApp(App)
 
-app.use(createPinia().use(piniaPluginPersist))
 app.use(router)
+app.use(pinia.use(piniaPluginPersist))
 
 app.use(defineComponents)
+
+router.beforeEach((to) => {
+  const { token } = useStore(pinia)
+  if (to.path !== '/login' && !token) return '/login'
+})
 
 app.mount('#app')
