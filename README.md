@@ -1,6 +1,6 @@
 # vue3-ts-admin
 
-线上地址: <a target="_black">https://guanshundai.github.io/index.html</a>
+线上地址: <a target="_black">https://guanshundai.github.io</a>
 
 ```javascript
 
