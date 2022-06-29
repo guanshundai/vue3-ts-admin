@@ -1,25 +1,25 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import piniaPluginPersist from 'pinia-plugin-persist' //持久化状态管理
-import 'ant-design-vue/dist/antd.less';
-import '@/assets/base.less'
-import defineComponents from '@/utils/defineComponents'  //全局注册自定义组件
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import piniaPluginPersist from "pinia-plugin-persist"; //持久化状态管理
+import "ant-design-vue/dist/antd.less";
+import "@/assets/base.less";
+import defineComponents from "@/utils/defineComponents"; //全局注册自定义组件
 
-import App from './App.vue'
-import router from './router'
-import { useStore } from './stores/useStore';
+import App from "./App.vue";
+import router from "./router";
+import { useStore } from "./stores/useStore";
 
-const pinia = createPinia()
-const app = createApp(App)
+const pinia = createPinia();
+const app = createApp(App);
 
-app.use(router)
-app.use(pinia.use(piniaPluginPersist))
+app.use(router);
+app.use(pinia.use(piniaPluginPersist));
 
-app.use(defineComponents)
+app.use(defineComponents);
 
-router.beforeEach((to) => {
-  const { token } = useStore(pinia)
-  if (to.path !== '/login' && !token) return '/login'
-})
+router.beforeEach((to: any) => {
+  const { token } = useStore(pinia);
+  if (to.path !== "/login" && !token) return "/login";
+});
 
-app.mount('#app')
+app.mount("#app");

@@ -1,5 +1,5 @@
 <template>
-  <a-spin :spinning="spinning">
+  <a-spin :spinning="spinning" style="max-height: 100%">
     <router-view v-if="isRefresh">
     </router-view>
   </a-spin>
