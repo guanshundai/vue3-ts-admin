@@ -1,6 +1,7 @@
 <template>
   <a-spin :spinning="spinning">
-    <router-view v-if="isRefresh"></router-view>
+    <router-view v-if="isRefresh">
+    </router-view>
   </a-spin>
 </template>
 

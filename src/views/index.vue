@@ -1,10 +1,12 @@
 <template>
-  <a-layout style="min-height: 100vh">
+  <a-layout style="height: 100vh;">
     <Sider :select="select" :sideKey="sideKey" />
-    <a-layout>
-      <Header @getKey="getKey" />
-      <Content />
-      <Footer />
+    <a-layout style="overflow-x: auto;">
+      <div style="min-width: 1024px;height: 100vh;">
+        <Header @getKey="getKey" />
+        <Content />
+        <Footer />
+      </div>
     </a-layout>
   </a-layout>
 </template>

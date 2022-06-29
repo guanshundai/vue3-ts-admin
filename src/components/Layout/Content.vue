@@ -10,7 +10,7 @@
 <style scoped lang='less'>
 .content {
   margin: 10px 16px 0 16px;
-  height: 100%;
+  height: calc(100% - 126px);
   background-color: #fff;
   overflow: auto;
   padding: 15px;
