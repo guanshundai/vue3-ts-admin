@@ -56,8 +56,6 @@ onMounted(() => {
 
 const getKey = ({ key }: { key: string }) => {
   emit('getKey', key, ['1'])
-  // store.changeSideKey(['1'])
-  // store.changeNavKey([key])
 }
 
 const refresh = () => {
