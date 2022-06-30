@@ -73,7 +73,7 @@ const cancelScreen = () => {
 }
 
 const logOut = () => {
-  sessionStorage.clear()
+  localStorage.clear()
   router.push('/login')
 }
 </script>

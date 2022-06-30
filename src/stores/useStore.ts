@@ -21,16 +21,16 @@ export const useStore = defineStore({
     },
     changeToken(token: string) {
       this.token = token;
-      localStorage.token = token;
     },
   },
-  // persist: {
-  //   enabled: true,
-  //   strategies: [
-  //     {
-  //       key: "DsAdmin", // 默认key是上面store的id，可自定义key
-  //       storage: localStorage, // 默认是sessionStorage会话存储，可以设置为localStorage本地长存储
-  //     },
-  //   ],
-  // },
+  persist: {
+    enabled: true,
+    strategies: [
+      {
+        key: "DsAdmin", // 默认key是上面store的id，可自定义key
+        storage: localStorage, // 默认是sessionStorage会话存储，可以设置为localStorage本地长存储
+        paths: ["token"],
+      },
+    ],
+  },
 });

@@ -23,7 +23,7 @@ router.beforeEach((to: any) => {
     store.changeNavKey([to.meta.nav]);
     store.changeSideKey([to.meta.key]);
   }
-  if (to.path !== "/login" && !localStorage.token) return "/login";
+  if (to.path !== "/login" && !store.token) return "/login";
 });
 
 app.mount("#app");
