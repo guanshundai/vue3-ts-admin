@@ -28,7 +28,7 @@ export const useStore = defineStore({
     strategies: [
       {
         key: "DsAdmin", // 默认key是上面store的id，可自定义key
-        storage: sessionStorage, // 默认是sessionStorage会话存储，可以设置为localStorage本地长存储
+        storage: localStorage, // 默认是sessionStorage会话存储，可以设置为localStorage本地长存储
       },
     ],
   },

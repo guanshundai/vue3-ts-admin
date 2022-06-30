@@ -14,11 +14,19 @@ const router = createRouter({
           path: "option1",
           name: "option1",
           component: () => import("@/views/Home/Option1.vue"),
+          meta: {
+            nav: "nav1",
+            key: "1",
+          },
         },
         {
           path: "option2",
           name: "option2",
           component: () => import("@/views/Home/Option2.vue"),
+          meta: {
+            nav: "nav1",
+            key: "2",
+          },
         },
       ],
     },
@@ -32,11 +40,19 @@ const router = createRouter({
           path: "option1",
           name: "nav2Option1",
           component: () => import("@/views/Nav2/option1.vue"),
+          meta: {
+            nav: "nav2",
+            key: "1",
+          },
         },
         {
           path: "option2",
           name: "nav2Option2",
           component: () => import("@/views/Nav2/option2.vue"),
+          meta: {
+            nav: "nav2",
+            key: "2",
+          },
         },
       ],
     },

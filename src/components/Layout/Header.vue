@@ -9,7 +9,7 @@
       <redo-outlined style="font-size: 22px;" @click="refresh" />
       <fullscreen-outlined @click="fullScreen" style="font-size: 22px;margin-left: 15px;" v-if="!isFull" />
       <fullscreen-exit-outlined @click="cancelScreen" style="font-size: 22px;margin-left: 15px;" v-else />
-      <a-popover :title="'Hello ' + username + ' !'" placement="bottomRight" autoAdjustOverflow>
+      <a-popover :title="'Hello ' + store.username + ' !'" placement="bottomRight" autoAdjustOverflow>
         <template #content>
           <a>
             <p>Profile</p>
@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang='ts'>
-import { ref, onMounted, inject } from 'vue'
+import { ref, onMounted, inject, watch } from 'vue'
 import { FullscreenOutlined, FullscreenExitOutlined, RedoOutlined } from '@ant-design/icons-vue';
 import logo from '@/assets/jingyu.png'
 import { useRouter } from 'vue-router';
@@ -36,7 +36,7 @@ import { useStore } from '@/stores/useStore'
 
 const router = useRouter()
 
-const { navKey, changeNavKey, changeSideKey, username } = useStore()
+const store = useStore()
 
 const emit = defineEmits<{ (event: 'getKey', key: string, sideKey: string[]): void }>()
 
@@ -45,14 +45,19 @@ const isFull = ref<boolean>(false)
 
 const fresh = inject<any>('refresh')
 
+watch(
+  () => store.navKey,
+  () => selectedKeys.value = store.navKey
+)
+
 onMounted(() => {
-  selectedKeys.value = navKey
+  selectedKeys.value = store.navKey
 })
 
 const getKey = ({ key }: { key: string }) => {
   emit('getKey', key, ['1'])
-  changeSideKey(['1'])
-  changeNavKey([key])
+  // store.changeSideKey(['1'])
+  // store.changeNavKey([key])
 }
 
 const refresh = () => {

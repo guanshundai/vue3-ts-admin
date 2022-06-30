@@ -18,8 +18,12 @@ app.use(pinia.use(piniaPluginPersist));
 app.use(defineComponents);
 
 router.beforeEach((to: any) => {
-  const { token } = useStore(pinia);
-  if (to.path !== "/login" && !token) return "/login";
+  const store = useStore(pinia);
+  if (to.meta) {
+    store.changeNavKey([to.meta.nav]);
+    store.changeSideKey([to.meta.key]);
+  }
+  if (to.path !== "/login" && !store.token) return "/login";
 });
 
 app.mount("#app");

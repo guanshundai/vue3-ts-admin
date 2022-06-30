@@ -27,7 +27,7 @@ import { ref, watch, onMounted } from "vue";
 
 import { useStore } from "@/stores/useStore";
 
-const { sideKey, changeSideKey } = useStore();
+const store = useStore();
 
 const props = defineProps<{
   select: string;
@@ -50,15 +50,22 @@ watch(
     openKeys.value = props.sideKey;
   }
 );
+watch(
+  () => store.sideKey,
+  () => {
+    selectedKeys.value = store.sideKey;
+    openKeys.value = store.sideKey;
+  }
+);
 
 onMounted(() => {
-  selectedKeys.value = sideKey;
-  openKeys.value = sideKey;
+  selectedKeys.value = store.sideKey;
+  openKeys.value = store.sideKey;
 });
 
 const getOpens = ({ keyPath }: { keyPath: string[] }) => {
   openKeys.value = keyPath;
-  changeSideKey(keyPath);
+  store.changeSideKey(keyPath);
 };
 </script>
 

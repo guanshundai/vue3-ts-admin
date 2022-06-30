@@ -12,16 +12,20 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useStore } from '@/stores/useStore'
 
-const { navKey } = useStore()
+const store = useStore()
 
 const select = ref<string>('nav1')
 const sideKey = ref<string[]>(['1'])
 
+watch(
+  () => store.navKey,
+  () => select.value = store.navKey.join('')
+)
 onMounted(() => {
-  select.value = navKey.join('')
+  select.value = store.navKey.join('')
 })
 
 const getKey = (key: string, key2: string[]) => {
