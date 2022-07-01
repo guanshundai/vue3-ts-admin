@@ -1,6 +1,6 @@
 <template>
   <a-layout-sider v-model:collapsed="collapsed" collapsible>
-    <div class="flex-r-c" style="width: 100%; padding: 10px; color: #fff; font-size: 20px">
+    <div class="flex-r-c side-logo" style="" @click="$router.push('/')">
       <div class="logo"></div>
       <Transition name="slide-fade">
         <span v-if="!collapsed">AutoFeed</span>
@@ -70,14 +70,23 @@ const getOpens = ({ keyPath }: { keyPath: string[] }) => {
 </script>
 
 <style scoped lang="less">
-.logo {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-  background-image: url("@/assets/jingyu.png");
-  background-size: auto 100%;
-  background-repeat: no-repeat;
+.side-logo {
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+
+  .logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    background-image: url("@/assets/jingyu.png");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+  }
 }
+
 
 .slide-fade-enter-active {
   transition: all 1s ease-out;
